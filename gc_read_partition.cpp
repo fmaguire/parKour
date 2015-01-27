@@ -106,24 +106,26 @@ int main (int argc, char *argv[]) {
         std::exit(1);
     }
     
-    arma::mat dataset(GC_scores_1.size(), 2);
+    arma::mat dataset(2, GC_scores_1.size());
 
     for(i = 0; i < GC_scores_1.size(); i++){
-        dataset(i,0) = GC_scores_1[i];
-        dataset(i,1) = GC_scores_2[i];
+        dataset(0,i) = GC_scores_1[i];
+        dataset(1,i) = GC_scores_2[i];
     }
 
     std::cout << dataset << '\n';
     
-//    int clusters = 2;
-//
-//    arma::Col<size_t> assignments;
-//
-//    mlpack::kmeans::KMeans<> k;
-//
-//    k.Cluster(dataset, clusters, assignments);
-//
-//    std::cout << assignments << '\n';
+    int clusters = 2;
+
+    arma::Col<size_t> assignments;
+
+    arma::mat centroids;
+
+    mlpack::kmeans::KMeans<> k;
+
+    k.Cluster(dataset, clusters, assignments, centroids);
+
+    std::cout << assignments << '\n';
 
     return 0;
 }
