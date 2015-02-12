@@ -14,8 +14,13 @@ arma::mat gc_counts(std::ifstream &r1_fp, std::ifstream &r2_fp){
     unsigned int i;
     unsigned int GC_r1, GC_r2;
     unsigned int AT_r1, AT_r2;
-
-    arma::mat output = arma::randu<arma::mat>(2,10);
+   
+    // output mat dimensions, initially have 10,000 rows and expand
+    // as needed below
+    unsigned int nrow = 10000;
+    unsigned int ncol = 2;
+    
+    arma::mat output(ncol, nrow);
    
     if(r1_fp.is_open() && r2_fp.is_open()){
         
@@ -59,6 +64,13 @@ arma::mat gc_counts(std::ifstream &r1_fp, std::ifstream &r2_fp){
                         }
                     }
                 }
+                
+                // expand nrows in output matrix by another 10k chunk if the
+                // readnumber is reaching the current number of rows
+                if(read_number >= nrow){
+                    nrow += 10000;
+                    output.resize(ncol, nrow);
+                }
 
                 output(0, read_number) = (float) GC_r1 / (GC_r1 + AT_r1);
                 output(1, read_number) = (float) GC_r2 / (GC_r2 + AT_r2);
@@ -72,6 +84,8 @@ arma::mat gc_counts(std::ifstream &r1_fp, std::ifstream &r2_fp){
         exit(1);
     }
 
+    // resize output matrix to correct nrows i.e. number of reads
+    output.resize(ncol, read_number);
 
     return output;
 }

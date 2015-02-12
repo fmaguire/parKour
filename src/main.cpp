@@ -14,7 +14,6 @@ int main (int argc, char *argv[]) {
 
         std::cout << "Usage: " << argv[0] << "r1.fastq r2.fastq" << '\n';
         std::exit(1);
-
     }
 
     r1_fp.open(argv[1]);
