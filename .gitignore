@@ -28,3 +28,6 @@ bin/*
 *.exe
 *.out
 *.app
+
+# vim
+*.swp

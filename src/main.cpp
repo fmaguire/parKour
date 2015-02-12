@@ -2,8 +2,8 @@
 #include <fstream>
 #include <vector>
 #include <string.h>
-#include <mlpack/methods/kmeans/kmeans.hpp>
 #include <armadillo>
+#include "kmeans.h"
 
 int main (int argc, char *argv[]) {
 
@@ -113,18 +113,12 @@ int main (int argc, char *argv[]) {
         dataset(1,i) = GC_scores_2[i];
     }
 
-    std::cout << dataset << '\n';
-    
     int clusters = 2;
 
-    arma::Col<size_t> assignments;
+    std::cout << dataset << '\n';
 
-    arma::mat centroids;
-
-    mlpack::kmeans::KMeans<> k;
-
-    k.Cluster(dataset, clusters, assignments, centroids);
-
+    arma::Col<size_t> assignments = kmeans(dataset, clusters);
+    
     std::cout << assignments << '\n';
 
     return 0;
@@ -152,11 +146,4 @@ int main (int argc, char *argv[]) {
 // // initial centroid guesses.
 // k.Cluster(dataset, clusters, assignments, centroids, false, true);
 //
-// @inproceedings{bradley1998refining,
-//  title={Refining initial points for k-means clustering},
-//  author={Bradley, Paul S. and Fayyad, Usama M.},
-//  booktitle={Proceedings of the Fifteenth International Conference on Machine
-//      Learning (ICML 1998)},
-//  volume={66},
-//  year={1998}
-//}
+
