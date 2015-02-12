@@ -24,10 +24,9 @@ clean:
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
 
 # Tests
-# tester:
-#   $(CC) $(CFLAGS) test/tester.cpp $(INC) $(LIB) -o bin/tester
-#
-#   # Spikes
+test: $(TARGET)
+	$(TARGET) test/test_files/test_r1.fastq test/test_files/test_r2.fastq
+
 
 .PHONY: clean
 
