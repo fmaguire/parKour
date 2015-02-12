@@ -9,7 +9,7 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall
 LIB := -lmlpack 
-INC := -I/usr/include/libxml2
+INC := -I/usr/include/libxml2 -Ilib/
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
