@@ -2,8 +2,8 @@
 #include <fstream>
 #include <vector>
 #include <string.h>
-#include <armadillo>
 #include <mlpack/methods/kmeans/kmeans.hpp>
+#include <armadillo>
 
 int main (int argc, char *argv[]) {
 
