@@ -2,7 +2,7 @@
 #include<iostream>
 #include<armadillo>
     
-void split_fastq(arma::Col<size_t> assignments, char *argv[]){
+void split_fastq(arma::Col<size_t> assignments, char* r1_fn, char* r2_fn) {
 
     std::ofstream cluster0_r1_fp;
     std::ofstream cluster0_r2_fp;
@@ -19,8 +19,8 @@ void split_fastq(arma::Col<size_t> assignments, char *argv[]){
     std::string r1_line;
     std::string r2_line;
 
-    r1_fp.open(argv[1]);
-    r2_fp.open(argv[2]);
+    r1_fp.open(r1_fn);
+    r2_fp.open(r2_fn);
 
     unsigned int line_number = 0;
     unsigned int read_number = 0;

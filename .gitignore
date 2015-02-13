@@ -31,3 +31,6 @@ bin/*
 
 # vim
 *.swp
+
+# output
+*.fq

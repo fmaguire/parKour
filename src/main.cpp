@@ -1,14 +1,10 @@
 #include <iostream>
-#include <fstream>
 #include <armadillo>
 #include "kmeans.h"
 #include "feature_extraction.h"
 #include "fastq_output.h"
 
 int main (int argc, char *argv[]) {
-
-    std::ifstream r1_fp;
-    std::ifstream r2_fp;
 
     // Check arg input 
     if(argc != 3 || strcmp(argv[1], "-h") == 0) {
@@ -17,22 +13,18 @@ int main (int argc, char *argv[]) {
         std::exit(1);
     }
 
-    r1_fp.open(argv[1]);
-    r2_fp.open(argv[2]);
-   
-    arma::mat dataset = gc_counts(r1_fp, r2_fp);    
+    char* r1_fn = argv[1];
+    char* r2_fn = argv[2];
 
-    r1_fp.close();
-    r2_fp.close();
+    arma::mat dataset = gc_counts(r1_fn, r2_fn);    
 
     int clusters = 2;
 
-    std::cout << dataset << '\n';
+    //std::cout << dataset << '\n';
     arma::Col<size_t> assignments = kmeans(dataset, clusters);
-    std::cout << assignments << '\n';
+    //std::cout << assignments << '\n';
    
-    split_fastq(assignments, argv);
+    split_fastq(assignments, r1_fn, r2_fn);
 
     return 0;
 }
-

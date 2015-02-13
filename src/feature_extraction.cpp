@@ -4,10 +4,16 @@
 #include <algorithm>
 #include <armadillo>
 
-arma::mat gc_counts(std::ifstream &r1_fp, std::ifstream &r2_fp){
-
+arma::mat gc_counts(char* r1_fn, char* r2_fn){
+   
     std::string r1_line;
     std::string r2_line;
+
+    std::ifstream r1_fp;
+    std::ifstream r2_fp;
+
+    r1_fp.open(r1_fn);
+    r2_fp.open(r2_fn);
 
     unsigned int line_number = 0;
     unsigned int read_number = 0;
@@ -86,6 +92,9 @@ arma::mat gc_counts(std::ifstream &r1_fp, std::ifstream &r2_fp){
 
     // resize output matrix to correct nrows i.e. number of reads
     output.resize(ncol, read_number);
+    
+    r1_fp.close();
+    r2_fp.close();
 
     return output;
 }

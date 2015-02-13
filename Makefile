@@ -9,7 +9,8 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall
 LIB := -lmlpack 
-INC := -I/usr/include/libxml2 -Ilib/
+INC := -I/usr/include/libxml2 
+OUT := $(wildcard cluster*.fq)
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
@@ -22,6 +23,7 @@ $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
 clean:
 	@echo " Cleaning..."; 
 	@echo " $(RM) -r $(BUILDDIR) $(TARGET)"; $(RM) -r $(BUILDDIR) $(TARGET)
+	@echo " $(RM) $(OUT)"; $(RM) $(OUT)
 
 # Tests
 test: $(TARGET)
