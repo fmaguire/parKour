@@ -3,13 +3,14 @@
 #include <armadillo>
 #include "kmeans.h"
 #include "feature_extraction.h"
+#include "fastq_output.h"
 
 int main (int argc, char *argv[]) {
 
     std::ifstream r1_fp;
     std::ifstream r2_fp;
 
-     // Check arg input 
+    // Check arg input 
     if(argc != 3 || strcmp(argv[1], "-h") == 0) {
 
         std::cout << "Usage: " << argv[0] << "r1.fastq r2.fastq" << '\n';
@@ -29,6 +30,8 @@ int main (int argc, char *argv[]) {
     std::cout << dataset << '\n';
     arma::Col<size_t> assignments = kmeans(dataset, clusters);
     std::cout << assignments << '\n';
+   
+    split_fastq(assignments, argv);
 
     return 0;
 }
