@@ -11,6 +11,7 @@ CFLAGS := -g -Wall
 LIB := -lmlpack 
 INC := -I/usr/include/libxml2 
 OUT := $(wildcard cluster*.fq)
+TEST_FILES := test/test_files/test_r1.fastq test/test_files/test_r2.fastq
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
@@ -27,8 +28,10 @@ clean:
 
 # Tests
 test: $(TARGET)
-	$(TARGET) test/test_files/test_r1.fastq test/test_files/test_r2.fastq
+	$(TARGET) $(TEST_FILES) 
 
+valgrind: $(TARGET)
+	valgrind $(TARGET) $(TEST_FILES)
 
 .PHONY: clean
 
