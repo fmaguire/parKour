@@ -25,8 +25,8 @@ Which will output 2N fastq files where N is the number of clusters:
 * cluster1_R2.fq
 * ...
 * ...
-* clusterN_R1.fq
-* clusterN_R2.fq
+* cluster(N-1)_R1.fq
+* cluster(N-1)_R2.fq
 ```
 
 It will also output a log file "run_log" which records the cluster centroids and number of paired reads assigned to each cluster.
