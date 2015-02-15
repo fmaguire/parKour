@@ -4,9 +4,9 @@ Paired Arrangement of Reads via Kmeans On Unlabelled PE-RNA-Seq reads
 parKour performs K-mean clustering on PE fastq formatted sequencing reads based
 on the GC bias of the paired reads.
 
-Despite being single threaded, performance is relatively good with 100M 150bp 
-reads clustered and output to separate fastq files in under 3 minutes and under
-1GB of memory.
+Despite being single threaded, performance is relatively good with 139M 150bp PE
+reads clustered and output to separate fastq files in 10 hours and under 1GB 
+of memory (10M reads took around 3 minutes on the same hardware).
 
 Currently, this is hard-coded for 2 clusters but hopefully this will be extended
 to a user provided number of clusters, time permitting.
