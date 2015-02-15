@@ -7,11 +7,11 @@ SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
-CFLAGS := -g -Wall
+CFLAGS := -g -Wall -std=c++11 
 LIB := -lmlpack 
 INC := -I/usr/include/libxml2 
-OUT := $(wildcard cluster*.fq)
-TEST_FILES := test/test_files/test_r1.fastq test/test_files/test_r2.fastq
+OUT := $(wildcard cluster*.fq) run_log
+TEST_PARAMS := test/test_files/test_r1.fastq test/test_files/test_r2.fastq 3
 
 $(TARGET): $(OBJECTS)
 	@echo " Linking..."
@@ -28,10 +28,10 @@ clean:
 
 # Tests
 test: $(TARGET)
-	$(TARGET) $(TEST_FILES) 
+	$(TARGET) $(TEST_PARAMS) 
 
 valgrind: $(TARGET)
-	valgrind $(TARGET) $(TEST_FILES)
+	valgrind $(TARGET) $(TEST_PARAMS)
 
 .PHONY: clean
 
