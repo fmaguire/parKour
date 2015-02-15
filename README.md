@@ -13,17 +13,23 @@ to a user provided number of clusters, time permitting.
 
 ##Usage:
 ```
-./parKour R1.fastq R2.fastq
+./parKour R1.fastq R2.fastq N_CLUSTERS
 ```
 
-Which will output 4 files:
+Which will output 2N fastq files where N is the number of clusters:
 
 ```
 * cluster0_R1.fq
 * cluster0_R2.fq
 * cluster1_R1.fq
 * cluster1_R2.fq
+* ...
+* ...
+* clusterN_R1.fq
+* clusterN_R2.fq
 ```
+
+It will also output a log file "run_log" which records the cluster centroids and number of paired reads assigned to each cluster.
 
 ##Dependencies:
 
