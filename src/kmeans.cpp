@@ -23,9 +23,9 @@ arma::Col<size_t> kmeans(arma::mat dataset, int num_clusters){
     std::ofstream log_file;
     log_file.open("run_log");
 
-    std::cout << "num cent: "centroids.n_rows << 
-    for (size_t i = 0; i < centroids.n_rows; i++){
-        log_file << "cluster" << i << " centroids:" << centroids(0,i) << "," <<  centroids(1,i)  << '\n';
+    for (size_t i = 0; i < centroids.n_cols; i++){
+        log_file << "cluster" << i << " centroids: " 
+            << centroids(0,i) << ", " <<  centroids(1,i)  << '\n';
     }
     log_file.close();
 
