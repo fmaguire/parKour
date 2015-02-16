@@ -5,11 +5,8 @@ parKour performs K-mean clustering on PE fastq formatted sequencing reads based
 on the GC bias of the paired reads.
 
 Despite being single threaded, performance is relatively good with 139M 150bp PE
-reads clustered and output to separate fastq files in 10 hours and under 1GB 
-of memory (10M reads took around 3 minutes on the same hardware).
-
-Currently, this is hard-coded for 2 clusters but hopefully this will be extended
-to a user provided number of clusters, time permitting.
+reads (45GB of data) 3-means clustered and output to separate fastq files in 14 hours with 7GB 
+max resident memory (10M reads took around 3 minutes on the same hardware).
 
 ##Usage:
 ```
@@ -33,19 +30,18 @@ It will also output a log file "run_log" which records the cluster centroids and
 
 ##Dependencies:
 
-    * [mlpack][http://www.mlpack.org/]
-    * [armadillo][http://arma.sourceforge.net/] (build with ARMA_64BIT_WORD if 
+    * [mlpack](http://www.mlpack.org/)
+    * [armadillo](http://arma.sourceforge.net/) (build with ARMA_64BIT_WORD if 
         you want to use parKour on datasets larger than 2bn PE reads)
 
 ##Installation:
 
-    * Ensure dependencies are installed and mlpack is in the ```LD_LIBRARY_PATH```
-    * ```make``` (note only tested on 64-bit GNU/Linux systems)
-    * To run program on toy dataset run ```make test```
+    * Ensure dependencies are installed and mlpack is in the LD_LIBRARY_PATH
+    * make (note only tested on 64-bit GNU/Linux systems)
+    * To run program on toy dataset run make test
 
 ##Future planned enhancements:
 
-    * User-provided cluster number
     * Optional Overclustering
     * Plotting of clustering
     * Unit tests
