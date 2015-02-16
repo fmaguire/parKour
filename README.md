@@ -30,21 +30,21 @@ It will also output a log file "run_log" which records the cluster centroids and
 
 ##Dependencies:
 
-    * [mlpack](http://www.mlpack.org/)
-    * [armadillo](http://arma.sourceforge.net/) (build with ARMA_64BIT_WORD if 
+   * [mlpack](http://www.mlpack.org/)
+   * [armadillo](http://arma.sourceforge.net/) (build with ARMA_64BIT_WORD if 
         you want to use parKour on datasets larger than 2bn PE reads)
 
 ##Installation:
 
-    * Ensure dependencies are installed and mlpack is in the LD_LIBRARY_PATH
-    * make (note only tested on 64-bit GNU/Linux systems)
-    * To run program on toy dataset run make test
+   * Ensure dependencies are installed and mlpack is in the `LD_LIBRARY_PATH`
+   * `make` (note only tested on 64-bit GNU/Linux systems)
+   * To run program on toy dataset run make test
 
 ##Future planned enhancements:
 
-    * Optional Overclustering
-    * Plotting of clustering
-    * Unit tests
+   * Optional Overclustering
+   * Plotting of clustering
+   * Unit tests
 
 ##Citations:
 ```
