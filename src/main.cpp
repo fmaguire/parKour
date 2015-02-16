@@ -18,13 +18,17 @@ int main (int argc, char *argv[]) {
     char* r2_fn = argv[2];
     int num_clusters = atoi(argv[3]);
 
+    std::cout << "1. Beginning Feature Extraction" << '\n';
     arma::mat dataset = gc_counts(r1_fn, r2_fn);    
+    std::cout << "2. Feature Extraction Complete" << '\n';
 
-    //std::cout << dataset << '\n';
+    std::cout << "3. Beginning K-means clustering" << '\n';
     arma::Col<size_t> assignments = kmeans(dataset, num_clusters);
-    //std::cout << assignments << '\n';
-   
+    std::cout << "4. K-means clustering complete" << '\n';
+
+    std::cout << "5. Beginning split of fastq input based on assignments" << '\n';
     split_fastq(num_clusters, assignments, r1_fn, r2_fn);
+    std::cout << "6. Fastq splitting complete" << '\n';
 
     return 0;
 }
