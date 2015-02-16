@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <armadillo>
-#include "kmeans.h"
-#include "feature_extraction.h"
-#include "fastq_output.h"
+#include "kmeans.hpp"
+#include "feature_extraction.hpp"
+#include "fastq_output.hpp"
 
 int main (int argc, char *argv[]) {
 
