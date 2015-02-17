@@ -9,7 +9,7 @@ SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 CFLAGS := -g -Wall -std=c++11 
 LIB := -lmlpack 
-INC := -I/usr/include/libxml2 
+INC := -I /usr/include/libxml2 -I include/
 OUT := $(wildcard cluster*.fq) run_log
 TEST_PARAMS := test/test_files/test_r1.fastq test/test_files/test_r2.fastq 3
 
