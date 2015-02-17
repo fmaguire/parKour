@@ -20,7 +20,6 @@ arma::mat gc_counts(char* r1_fn, char* r2_fn){
     // initialise vars for main loop
     unsigned int line_number = 0;
     unsigned int read_number = 0;
-    unsigned int i;
     unsigned int GC_r1, GC_r2;
     unsigned int AT_r1, AT_r2;
    
@@ -46,7 +45,7 @@ arma::mat gc_counts(char* r1_fn, char* r2_fn){
 
                 // As paired reads can be different lengths after trimming 
                 // iterate over the length of the longer read
-                for(i = 0; i < std::max(r1_line.size(), r2_line.size()); i++){
+                for(unsigned int i = 0; i < std::max(r1_line.size(), r2_line.size()); i++){
                     
                     // If we aren't at the end of read 1, keep tallying GC nts 
                     if(i < r1_line.size()){
